@@ -4,9 +4,10 @@ import {
   LineSegments,
   Mesh,
   MeshPhongMaterial,
-  SphereBufferGeometry,
-  TextureLoader
+  SphereBufferGeometry
 } from 'three';
+
+import ExpoTHREE, { TextureLoader} from 'expo-three'
 
 const THREE = window.THREE
   ? window.THREE // Prefer consumption from global THREE, if exists
@@ -94,7 +95,7 @@ export default Kapsule({
         // Black globe if no image
         !globeMaterial.color && (globeMaterial.color = new THREE.Color(0x000000));
       } else {
-        new THREE.TextureLoader().load(state.globeImageUrl, texture => {
+        new TextureLoader().load(state.globeImageUrl, texture => {
           globeMaterial.map = texture;
           globeMaterial.color = null;
           globeMaterial.needsUpdate = true;
@@ -110,7 +111,7 @@ export default Kapsule({
         globeMaterial.bumpMap = null;
         globeMaterial.needsUpdate = true;
       } else {
-        state.bumpImageUrl && new THREE.TextureLoader().load(state.bumpImageUrl, texture => {
+        state.bumpImageUrl && new TextureLoader().load(state.bumpImageUrl, texture => {
           globeMaterial.bumpMap = texture;
           globeMaterial.needsUpdate = true;
         });
