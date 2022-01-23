@@ -1,5 +1,4 @@
 import {
-  THREE,
   Color,
   LineBasicMaterial,
   LineSegments,
