@@ -1,5 +1,4 @@
 import {
-  THREE,
   Color,
   LineBasicMaterial,
   LineSegments,
@@ -7,9 +6,9 @@ import {
   MeshPhongMaterial,
   SphereBufferGeometry,
   TextureLoader
-} from 'expo-three';
+} from 'three';
 
-/*const THREE = window.THREE
+const THREE = window.THREE
   ? window.THREE // Prefer consumption from global THREE, if exists
   : {
     Color,
@@ -19,7 +18,7 @@ import {
     MeshPhongMaterial,
     SphereBufferGeometry,
     TextureLoader
-  };*/
+  };
 
 import { GeoJsonGeometry } from 'three-geojson-geometry';
 import { createGlowMesh } from '../utils/three-glow-mesh';
@@ -95,13 +94,14 @@ export default Kapsule({
         // Black globe if no image
         !globeMaterial.color && (globeMaterial.color = new THREE.Color(0x000000));
       } else {
+        console.log("****Texture found loading...****");
         new THREE.TextureLoader().load(state.globeImageUrl, texture => {
           globeMaterial.map = texture;
           globeMaterial.color = null;
           globeMaterial.needsUpdate = true;
 
           // ready when first globe image finishes loading (asynchronously to allow 1 frame to load texture)
-          !state.ready && (state.ready = true) && setTimeout(state.onReady);
+          //!state.ready && (state.ready = true) && setTimeout(state.onReady);
         });
       }
     }
@@ -111,6 +111,7 @@ export default Kapsule({
         globeMaterial.bumpMap = null;
         globeMaterial.needsUpdate = true;
       } else {
+        console.log("****Bump image found loading...****")
         state.bumpImageUrl && new THREE.TextureLoader().load(state.bumpImageUrl, texture => {
           globeMaterial.bumpMap = texture;
           globeMaterial.needsUpdate = true;
