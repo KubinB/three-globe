@@ -1,4 +1,5 @@
 import {
+  THREE,
   Color,
   LineBasicMaterial,
   LineSegments,
@@ -8,7 +9,7 @@ import {
   TextureLoader
 } from 'expo-three';
 
-const THREE = window.THREE
+/*const THREE = window.THREE
   ? window.THREE // Prefer consumption from global THREE, if exists
   : {
     Color,
@@ -18,7 +19,7 @@ const THREE = window.THREE
     MeshPhongMaterial,
     SphereBufferGeometry,
     TextureLoader
-  };
+  };*/
 
 import { GeoJsonGeometry } from 'three-geojson-geometry';
 import { createGlowMesh } from '../utils/three-glow-mesh';
