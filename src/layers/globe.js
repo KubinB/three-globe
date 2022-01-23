@@ -92,9 +92,8 @@ export default Kapsule({
     if (changedProps.hasOwnProperty('globeImageUrl')) {
       if (!state.globeImageUrl) {
         // Black globe if no image
-        !globeMaterial.color && (globeMaterial.color = new THREE.Color(0x000000));
+        !globeMaterial.color && (globeMaterial.color = new THREE.Color(0xFFFFFF));
       } else {
-        console.log("****Texture found loading...****");
         new THREE.TextureLoader().load(state.globeImageUrl, texture => {
           globeMaterial.map = texture;
           globeMaterial.color = null;
@@ -111,7 +110,6 @@ export default Kapsule({
         globeMaterial.bumpMap = null;
         globeMaterial.needsUpdate = true;
       } else {
-        console.log("****Bump image found loading...****")
         state.bumpImageUrl && new THREE.TextureLoader().load(state.bumpImageUrl, texture => {
           globeMaterial.bumpMap = texture;
           globeMaterial.needsUpdate = true;
