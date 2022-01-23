@@ -92,7 +92,7 @@ export default Kapsule({
     if (changedProps.hasOwnProperty('globeImageUrl')) {
       if (!state.globeImageUrl) {
         // Black globe if no image
-        !globeMaterial.color && (globeMaterial.color = new THREE.Color(0xFFFFFF));
+        !globeMaterial.color && (globeMaterial.color = new THREE.Color(0xFF0000));
       } else {
         new THREE.TextureLoader().load(state.globeImageUrl, texture => {
           globeMaterial.map = texture;
